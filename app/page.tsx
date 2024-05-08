@@ -41,8 +41,13 @@ export default function Home() {
     <>
       <Header />
       <form className="mt-14 mx-auto max-w-[360px] flex flex-col gap-1" onSubmit={onSendSMS}>
-        <input className="block p-3 w-full rounded text-gray-700" value={phone} onChange={e => setPhone(e.target.value)} />
-        <button className="px-4 py-2 flex justify-center bg-slate-800 hover:bg-slate-900/95 transition-all duration-200 rounded disabled:opacity-30 disabled:bg-slate-800" disabled={pending}>
+        <input 
+          className="block p-3 w-full rounded text-gray-700 border border-gray-400" 
+          placeholder="091234567"
+          value={phone} 
+          onChange={e => setPhone(e.target.value)} 
+        />
+        <button className="px-4 py-2 flex justify-center text-slate-100 bg-slate-600 dark:bg-slate-800 hover:bg-slate-700 hover:dark:bg-slate-900/95 transition-all duration-200 rounded disabled:opacity-30 disabled:hover:bg-slate-600 disabled:bg-slate-800" disabled={pending}>
           {pending ? <IconLoader2 className="animate-spin"/> : 'Send Verify Code'}
         </button>
       </form>

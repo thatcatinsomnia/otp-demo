@@ -26,7 +26,7 @@ export default function OTPForm() {
       setPending(false);
       validateOtp();
       setIsSubmitted(true);
-    }, 5000);
+    }, 3000);
   };
 
   const validateOtp = () => {
@@ -61,7 +61,7 @@ export default function OTPForm() {
             <Slot key={idx} {...slot} />
           ))} 
         />
-        <button ref={btnRef} className="mt-8 md:mt-12 mx-auto w-40 py-2 md:py-4 flex justify-center bg-slate-800 hover:bg-slate-900/95 transition-all duration-200 rounded disabled:opacity-50 disabled:hover:bg-slate-800" disabled={pending}>
+        <button ref={btnRef} className="mt-8 md:mt-12 mx-auto w-40 py-2 md:py-4 flex justify-center text-slate-100 bg-slate-600 dark:bg-slate-800 hover:bg-slate-700 dark:hover:bg-slate-900/95 transition-all duration-200 rounded disabled:opacity-50 disabled:hover:bg-slate-600 disabled:dark:hover:bg-slate-800" disabled={pending}>
           {pending ? <IconLoader2 className="animate-spin" /> : 'Confirm'}
         </button>
       </form>
@@ -73,7 +73,7 @@ function Slot(props: SlotProps) {
   const outlineStyles = props.isActive ? 'outline:3 md:outline-4' : 'outline-0' 
 
   return (
-    <div className={`${outlineStyles} relative w-12 h-14 md:w-20 md:h-28 text-[2rem] md:text-[3rem] flex items-center justify-center text-gray-700 dark:text-gray-100 border border-gray-600 rounded group-hover:border-gray-400 transition-all duration-200 outline outline-white`}>
+    <div className={`${outlineStyles} relative w-12 h-14 md:w-20 md:h-28 text-[2rem] md:text-[3rem] flex items-center justify-center text-gray-700 dark:text-gray-100 border border-slate-400 dark:border-gray-600 rounded group-hover:border-gray-600 group-hover:dark:border-gray-400 transition-all duration-200 outline outline-slate-500 dark:outline-white`}>
       {props.char !== null && <div>{props.char}</div>}
       {props.hasFakeCaret && <FakeCaret />}
     </div>
@@ -83,7 +83,7 @@ function Slot(props: SlotProps) {
 function FakeCaret() {
   return (
     <div className="absolute pointer-events-none inset-0 flex items-center justify-center animate-caret-blink">
-      <div className="w-px h-6 md:h-16 bg-gray-100" />
+      <div className="w-px h-6 md:h-16 bg-slate-600 dark:bg-gray-100" />
     </div>
   );
 }
