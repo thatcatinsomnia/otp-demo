@@ -44,7 +44,7 @@ export default function OTPForm() {
 
   return isSubmitted ? (
     <div className="w-full h-full grid place-items-center">
-      <p className={`text-9xl uppercase animate-bounce ${isSuccess ? 'text-teal-500' : 'text-red-600'}`}>{isSuccess ? 'SUCCESS' : 'FAILD'}</p>
+      <p className={`text-[20vw] uppercase animate-bounce ${isSuccess ? 'text-teal-500' : 'text-red-600'}`}>{isSuccess ? 'SUCCESS' : 'FAILD'}</p>
     </div>
   ) : (
     <>
