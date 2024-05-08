@@ -43,6 +43,7 @@ export default function Home() {
       <form className="mt-14 mx-auto max-w-[360px] flex flex-col gap-1" onSubmit={onSendSMS}>
         <input 
           className="block p-3 w-full rounded text-gray-700 border border-gray-400" 
+          type="tel"
           placeholder="091234567"
           value={phone} 
           onChange={e => setPhone(e.target.value)} 
