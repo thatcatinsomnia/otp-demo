@@ -2,7 +2,7 @@
 
 import type { FormEvent } from 'react';
 import type { SlotProps } from 'input-otp';
-import { useState, useRef, Suspense } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation'
 import { OTPInput } from 'input-otp';
 import { IconLoader2 } from '@tabler/icons-react';
@@ -15,6 +15,19 @@ export default function OTPForm() {
   const [pending, setPending] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    if ('OTPCredential' in window) {
+      navigator.credentials.get({
+        otp: { transport: ['sms'] }
+      }).then(otp => {
+        setOtp(otp?.code);
+      }).catch(err => {
+        console.log('error when get otp');
+        console.log(err);
+      });
+    }
+  }, []);
 
   const onConfirm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -52,6 +65,7 @@ export default function OTPForm() {
       <form className="flex flex-col" onSubmit={onConfirm}>
         <OTPInput 
           autoFocus
+          autoComplete="one-time-code"
           value={otp}
           onChange={value => setOtp(value)}
           onComplete={onComplete}

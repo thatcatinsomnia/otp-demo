@@ -11,7 +11,7 @@ export async function POST(request: Request) {
 
   try {
     const message = await client.messages.create({
-      body: `your verify code: ${verifyCode}`,
+      body: `your verify is code: ${verifyCode}\n@${process.env.DOMAIN} #${verifyCode}`,
       from: '+12075693402',
       to: `+886${phone}`
     });
