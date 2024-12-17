@@ -12,7 +12,7 @@ export async function POST(request: Request) {
   try {
     const message = await client.messages.create({
       body: `親愛的東森購物網會員，驗證碼：${verifyCode}，請至手機驗證頁輸入此組號碼，以確保會員帳戶安全。\n\n@${process.env.DOMAIN} #${verifyCode}`,
-      from: '+12075693402',
+      from: process.env.FROM_PHONE,
       to: `+886${phone}`
     });
 
